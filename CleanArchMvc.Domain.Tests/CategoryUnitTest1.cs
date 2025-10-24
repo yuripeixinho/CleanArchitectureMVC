@@ -47,6 +47,5 @@ public class CategoryUnitTest1
         action.Should()
             .Throw<CleanArchMvc.Domain.Validation.DomainExceptionValidation>()
             .WithMessage("Invalid name. Name is required");
-
     }
 }
