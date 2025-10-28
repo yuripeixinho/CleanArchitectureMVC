@@ -20,7 +20,7 @@ public sealed class Product : Entity
         DomainExceptionValidation.When(id < 0, "Invalid Id Value");
         Id = id;    
     }
-    public void Update(int id, string name, string description, decimal price, int stock, string image, int categoryId)
+    public void Update(string name, string description, decimal price, int stock, string image, int categoryId)
     {
         ValidateDomain(name, description, price, stock, image);
         CategoryId = categoryId;
@@ -53,6 +53,6 @@ public sealed class Product : Entity
         Image = image;
     }
 
-    public int CategoryId { get; private set; } 
-    public Category Category { get; private set; }  
+    public int CategoryId { get; set; } 
+    public Category Category { get; set; }  
 }

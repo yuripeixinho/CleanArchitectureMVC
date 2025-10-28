@@ -14,16 +14,17 @@ public class ProductRepository : IProductRepository
         _productContext = context;
     }
 
-    public async Task<Product> GetProductByIdAsync(int? id)
-    {
-        return await _productContext.Products.FindAsync(id);
-    }
-
-    public async Task<Product> GetProductCategoryAsync(int productId)
+    public async Task<Product> GetByIdAsync(int? id)
     {
         return await _productContext.Products.Include(p => p.Category)
-            .SingleOrDefaultAsync(p => p.Id == productId);
+                  .SingleOrDefaultAsync(p => p.Id == id);
     }
+
+    //public async Task<Product> GetProductCategoryAsync(int productId)
+    //{
+    //    return await _productContext.Products.Include(p => p.Category)
+    //        .SingleOrDefaultAsync(p => p.Id == productId);
+    //}
 
     public async Task<IEnumerable<Product>> GetProductsAsync()
     {
